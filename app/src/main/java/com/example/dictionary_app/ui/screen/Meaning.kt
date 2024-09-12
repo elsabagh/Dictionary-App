@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.dictionary_app.domain.model.Meaning
 
+// Composable that displays individual word meanings and their parts of speech
 @Composable
 fun Meaning(
     meaning: Meaning, index: Int
@@ -24,6 +25,7 @@ fun Meaning(
             .fillMaxWidth()
             .padding(horizontal = 16.dp)
     ) {
+        // Displays the part of speech of the word, e.g., noun, verb, etc.
         Text(
             text = "${index + 1}. ${meaning.partOfSpeech}",
             fontSize = 19.sp,
@@ -43,6 +45,7 @@ fun Meaning(
                 .padding(top = 2.dp, bottom = 4.dp, start = 12.dp, end = 12.dp)
         )
 
+        // Displays the definition if it's available
         if (meaning.definitions.definition.isNotEmpty()) {
             Spacer(modifier = Modifier.height(8.dp))
             Row(modifier = Modifier.padding(horizontal = 8.dp)) {
@@ -61,6 +64,7 @@ fun Meaning(
             }
         }
 
+        // Displays the example sentence if available
         if (meaning.definitions.example.isNotEmpty()) {
             Spacer(modifier = Modifier.height(8.dp))
             Row(modifier = Modifier.padding(horizontal = 8.dp)) {

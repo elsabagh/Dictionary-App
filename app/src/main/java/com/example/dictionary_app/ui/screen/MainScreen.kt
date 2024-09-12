@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.dictionary_app.presentation.MainState
 
+// Main screen function that renders content based on the current state (loading or results)
 @Composable
 fun MainScreen(
     mainState: MainState,
@@ -32,6 +33,7 @@ fun MainScreen(
                 .padding(horizontal = 16.dp)
         ) {
             mainState.wordItem?.let { wordItem ->
+                // Display the word in large text
                 Text(
                     text = wordItem.word,
                     fontSize = 30.sp,
@@ -39,6 +41,7 @@ fun MainScreen(
                 )
                 Spacer(modifier = Modifier.height(20.dp))
 
+                // Display the phonetic transcription of the word
                 Text(
                     text = wordItem.phonetic,
                     fontSize = 17.sp,
@@ -47,6 +50,7 @@ fun MainScreen(
             }
         }
 
+        // A separate section below the word info
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -59,6 +63,7 @@ fun MainScreen(
                 )
                 .background(MaterialTheme.colorScheme.secondaryContainer.copy(0.7f))
         ) {
+            // Shows a loading indicator if data is still being fetched
             if (mainState.isLoading) {
                 CircularProgressIndicator(
                     modifier = Modifier
@@ -67,6 +72,7 @@ fun MainScreen(
                     color = MaterialTheme.colorScheme.primary
                 )
             } else {
+                // If data is loaded, display the word's meanings
                 mainState.wordItem?.let { wordItem ->
                     WordResult(wordItem)
                 }

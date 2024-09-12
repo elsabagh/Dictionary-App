@@ -21,17 +21,21 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.dictionary_app.R
 
+// Search bar composable that handles the user input for searching words
 @Composable
 fun SearchBar(mainState: MainState, mainViewModel: MainViewModel) {
     OutlinedTextField(
         modifier = Modifier
             .padding(horizontal = 16.dp, vertical = 32.dp)
             .fillMaxWidth(),
+        // Rounded corners for the search bar
         shape = MaterialTheme.shapes.medium,
         value = mainState.searchWord,
+        // Updates the search word in the ViewModel when the user types
         onValueChange = {
             mainViewModel.onEvent(MainUiEvents.OnSearchWordChange(it))
         },
+        // Search icon that triggers the search when clicked
         trailingIcon = {
             Icon(
                 imageVector = Icons.Default.Search,
@@ -43,6 +47,7 @@ fun SearchBar(mainState: MainState, mainViewModel: MainViewModel) {
                     }
             )
         },
+        // Placeholder label for the search bar
         label = {
             Text(
                 text = stringResource(R.string.search_a_word),
