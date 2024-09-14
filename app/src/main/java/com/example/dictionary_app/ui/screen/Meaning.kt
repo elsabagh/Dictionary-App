@@ -11,8 +11,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.dictionary_app.domain.model.Definition
 import com.example.dictionary_app.domain.model.Meaning
 
 // Composable that displays individual word meanings and their parts of speech
@@ -83,4 +85,18 @@ fun Meaning(
             }
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewMeaning() {
+    val dummyMeaning = Meaning(
+        partOfSpeech = "Noun",
+        definitions = Definition(
+            definition = "A representative form or pattern",
+            example = "This painting is a prime example of his work."
+        )
+    )
+
+    Meaning(meaning = dummyMeaning, index = 1)
 }

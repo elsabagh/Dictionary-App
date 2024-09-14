@@ -10,8 +10,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.dictionary_app.domain.model.Definition
+import com.example.dictionary_app.domain.model.WordItem
 import com.example.dictionary_app.presentation.MainState
 
 // Main screen function that renders content based on the current state (loading or results)
@@ -79,4 +82,30 @@ fun MainScreen(
             }
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewMainScreen() {
+    val dummyWordItem = WordItem(
+        word = "Example",
+        phonetic = "/ˈɛɡzæmpəl/",
+        meanings = listOf(
+            com.example.dictionary_app.domain.model.Meaning(
+                partOfSpeech = "Noun",
+                definitions = Definition(
+                    definition = "A representative form or pattern",
+                    example = "This painting is a prime example of his work."
+                )
+            )
+        )
+    )
+
+    val dummyMainState = MainState(
+        searchWord = "Example",
+        wordItem = dummyWordItem,
+        isLoading = false
+    )
+
+    MainScreen(mainState = dummyMainState, paddingValues = PaddingValues())
 }
